@@ -63,6 +63,8 @@ function drawFrame() {
                       (Math.sin((dx+XHome+100)*0.04)*8)+
                       (Math.cos((dy+YHome+100)*0.04)*8)+
                       (Math.sin((dx+XHome+500)*0.02)*15)+
+                      (Math.cos((dy+YHome+500)*0.02)*15)+
+                      (Math.sin((dx+XHome+900)*0.01)*20)
                       )/5.5))*5.5;
         
         var YPos = YHome + YOffset;
@@ -82,7 +84,7 @@ function drawFrame() {
             
             ctx.drawImage(grass,XRender,YRender);
                         
-            for (n = 0; n < (YOffset/10); n=n+0.2){
+            for (n = 0; n < (YOffset/13); n=n+0.2){
                 ctx.drawImage(whiteMask,XRender,YRender);
             }
             for (n = 0; n < -(YOffset/12); n=n+0.2){
