@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<body onload="drawFrame();">
+
+<img id="grass" src="Grass.png" width="22" height="22">
+<img id="water" src="Water.png" width="22" height="22">
+<img id="blackMask" src="BlackMask.png" width="22" height="22">
+<img id="whiteMask" src="WhiteMask.png" width="22" height="22">
+    
+<canvas id="myCanvas" width="480" height="360"
+style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+<script>
+function drawFrame() {
+    
+    
+    
+    //PREPARE CANVAS AND IMAGES//
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+           
+    var grass = document.getElementById("grass");
+    var water = document.getElementById("water");
+    var blackMask = document.getElementById("blackMask");
+    var whiteMask = document.getElementById("whiteMask");
+    
+    
+    
+    //SET UP WORLD GEN PARAMETERS//
+    const frequency1 = 0.23;
+    const amplitude1 = 34;
+    const offset1 = 269;
+    
+    const frequency2 = 0.84;
+    const amplitude2 = 19;
+    const offset2 = 632
+    
+    const frequency3 = 0.9;
+    const amplitude3 = 12;
+    const offset3 = 436;
+    
+    const frequency4 = 1.88;
+    const amplitude4 = 8;
+    const offset4 = 487;
+    
+    const dx = 11;
+    const dy = 11;
+    
+    
+    
+    
+    //DRAW THE FRAME//
+            
+    for (tileID = 0; tileID < 3600; tileID++){
+        
+        var XHome = (tileID % 60) * 11  - (Math.floor(tileID / 60)) * 11;
+        var YHome = (335 - (Math.floor(tileID / 60)) * 5.5) - (tileID % 60) * 5.5;
+        
+        var YOffset = (Math.round((
+                      (Math.sin((dx+XHome+269)*0.03)*12)+
+                      (Math.cos((dy+YHome+269)*0.03)*8)+
+                      (Math.sin((dx+XHome+100)*0.04)*8)+
+                      (Math.cos((dy+YHome+100)*0.04)*8)+
+                      (Math.sin((dx+XHome+500)*0.02)*15)+
+                      )/5.5))*5.5;
+        
+        var YPos = YHome + YOffset;
+        var XPos = XHome;
+        
+        if (YOffset<-50){
+            
+            var XRender = XPos + 240;
+            var YRender = -1 * ( YPos - YOffset - 50) + 180;
+            
+            ctx.drawImage(water,XRender,YRender);
+                        
+        } else{
+            
+            var XRender = XPos + 240;
+            var YRender = -1 * YPos + 200;
+            
+            ctx.drawImage(grass,XRender,YRender);
+                        
+            for (n = 0; n < (YOffset/10); n=n+0.2){
+                ctx.drawImage(whiteMask,XRender,YRender);
+            }
+            for (n = 0; n < -(YOffset/12); n=n+0.2){
+                ctx.drawImage(blackMask,XRender,YRender);
+            }
+
+        }
+        
+        
+        
+    }
+        
+    
+    
+}
+
+</script>
+
+</body>
+</html>
