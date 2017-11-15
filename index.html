@@ -72,8 +72,10 @@ function drawFrame() {
                       (Math.cos((dy+YHome+025)*0.070)*2)+
                       (Math.sin((dx+XHome+100)*0.085)*1.5)+
                       (Math.cos((dy+YHome+330)*0.080)*1.5)+
-                      (Math.sin((dy+dx+XHome+YHome)*0.040)*3.5)+
-                      (Math.cos((dy-dx-XHome+YHome)*0.030)*3.5)
+                      (Math.sin((dy+dx+XHome+YHome)*0.040)*3)+
+                      (Math.cos((dy-dx-XHome+YHome+330)*0.030)*3)+
+                      (Math.sin((dx-dy+XHome-YHome+880)*0.035)*3)+
+                      (Math.cos((dx-dy+XHome+YHome+44)*0.025)*4)
                       )/5.5))*5.0)-15;
         
         var YPos = YHome + YOffset;
