@@ -43,8 +43,11 @@ function drawFrame() {
     const amplitude4 = 8;
     const offset4 = 487;
     
-    const dx = -121;
-    const dy = 363;
+    const viewX = 25;
+    const viewY = 20;
+    
+    const dx = viewX*11
+    const dy = viewY*11
     
     
     
@@ -61,14 +64,16 @@ function drawFrame() {
                       (Math.cos((dy+YHome+269)*0.01)*20)+
                       (Math.sin((dx+XHome+100)*0.02)*15)+
                       (Math.cos((dy+YHome+100)*0.025)*15)+
-                      (Math.sin((dx+XHome+000)*0.040)*4.5)+
-                      (Math.cos((dy+YHome+000)*0.040)*4.5)+
+                      (Math.sin((dx+XHome+000)*0.040)*3.5)+
+                      (Math.cos((dy+YHome+000)*0.040)*3.5)+
                       (Math.sin((dx+XHome+350)*0.050)*3)+
                       (Math.cos((dy+YHome+350)*0.050)*3)+
                       (Math.sin((dx+XHome+030)*0.075)*2)+
                       (Math.cos((dy+YHome+025)*0.070)*2)+
                       (Math.sin((dx+XHome+100)*0.085)*1.5)+
-                      (Math.cos((dy+YHome+330)*0.080)*1.5)
+                      (Math.cos((dy+YHome+330)*0.080)*1.5)+
+                      (Math.sin((dy+dx+XHome+YHome)*0.040)*3.5)+
+                      (Math.cos((dy-dx-XHome+YHome)*0.030)*3.5)
                       )/5.5))*5.0)-15;
         
         var YPos = YHome + YOffset;
