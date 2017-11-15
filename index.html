@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html>
-<body onload="drawFrame();">
+<!-- saved from url=(0042)file:///E:/Workspace/WalkAround/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></head><body onload="drawFrame();">
 
-<img id="grass" src="Grass.png" width="22" height="22">
-<img id="water" src="Water.png" width="22" height="22">
-<img id="blackMask" src="BlackMask.png" width="22" height="22">
-<img id="whiteMask" src="WhiteMask.png" width="22" height="22">
+<img id="grass" src="./index_files/Grass.png" width="22" height="22">
+<img id="water" src="./index_files/Water.png" width="22" height="22">
+<img id="blackMask" src="./index_files/BlackMask.png" width="22" height="22">
+<img id="whiteMask" src="./index_files/WhiteMask.png" width="22" height="22">
     
-<canvas id="myCanvas" width="480" height="360"
-style="border:1px solid #d3d3d3;">
+<canvas id="myCanvas" width="480" height="360" style="border:1px solid #d3d3d3;">
 Your browser does not support the HTML5 canvas tag.</canvas>
 
 <script>
@@ -44,8 +43,8 @@ function drawFrame() {
     const amplitude4 = 8;
     const offset4 = 487;
     
-    const dx = 11;
-    const dy = 11;
+    const dx = -121;
+    const dy = 363;
     
     
     
@@ -57,15 +56,20 @@ function drawFrame() {
         var XHome = (tileID % 60) * 11  - (Math.floor(tileID / 60)) * 11;
         var YHome = (335 - (Math.floor(tileID / 60)) * 5.5) - (tileID % 60) * 5.5;
         
-        var YOffset = (Math.round((
-                      (Math.sin((dx+XHome+269)*0.03)*12)+
-                      (Math.cos((dy+YHome+269)*0.03)*8)+
-                      (Math.sin((dx+XHome+100)*0.04)*8)+
-                      (Math.cos((dy+YHome+100)*0.04)*8)+
-                      (Math.sin((dx+XHome+500)*0.02)*15)+
-                      (Math.cos((dy+YHome+500)*0.02)*15)+
-                      (Math.sin((dx+XHome+900)*0.01)*20)
-                      )/5.5))*5.5;
+        var YOffset = ((Math.round((
+                      (Math.sin((dx+XHome+269)*0.01)*20)+
+                      (Math.cos((dy+YHome+269)*0.01)*20)+
+                      (Math.sin((dx+XHome+100)*0.02)*15)+
+                      (Math.cos((dy+YHome+100)*0.025)*15)+
+                      (Math.sin((dx+XHome+000)*0.040)*4.5)+
+                      (Math.cos((dy+YHome+000)*0.040)*4.5)+
+                      (Math.sin((dx+XHome+350)*0.050)*3)+
+                      (Math.cos((dy+YHome+350)*0.050)*3)+
+                      (Math.sin((dx+XHome+030)*0.075)*2)+
+                      (Math.cos((dy+YHome+025)*0.070)*2)+
+                      (Math.sin((dx+XHome+100)*0.085)*1.5)+
+                      (Math.cos((dy+YHome+330)*0.080)*1.5)
+                      )/5.5))*5.0)-15;
         
         var YPos = YHome + YOffset;
         var XPos = XHome;
@@ -73,9 +77,13 @@ function drawFrame() {
         if (YOffset<-50){
             
             var XRender = XPos + 240;
-            var YRender = -1 * ( YPos - YOffset - 50) + 180;
+            var YRender = -1 * ( YPos - YOffset - 70) + 180;
             
             ctx.drawImage(water,XRender,YRender);
+            
+            for (n = 0; n < -(YOffset/10); n=n+0.5){
+                ctx.drawImage(blackMask,XRender,YRender);
+            }
                         
         } else{
             
@@ -83,14 +91,14 @@ function drawFrame() {
             var YRender = -1 * YPos + 200;
             
             ctx.drawImage(grass,XRender,YRender);
-                        
-            for (n = 0; n < (YOffset/13); n=n+0.2){
+            
+            for (n = 0; n < (YOffset/10); n=n+0.2){
                 ctx.drawImage(whiteMask,XRender,YRender);
             }
             for (n = 0; n < -(YOffset/12); n=n+0.2){
                 ctx.drawImage(blackMask,XRender,YRender);
             }
-
+                        
         }
         
         
@@ -103,5 +111,6 @@ function drawFrame() {
 
 </script>
 
-</body>
-</html>
+
+
+</body></html>
