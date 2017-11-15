@@ -43,7 +43,7 @@ function drawFrame() {
     const amplitude4 = 8;
     const offset4 = 487;
     
-    const viewX = 1700;
+    const viewX = 1500;
     const viewY = 500;
     
     const dx = viewX*11
@@ -84,7 +84,7 @@ function drawFrame() {
         if (YOffset<-50){
             
             var XRender = XPos + 240;
-            var YRender = -1 * ( YPos - YOffset - 70) + 180;
+            var YRender = -1 * ( YPos - YOffset - 30.5) + 180;
             
             ctx.drawImage(water,XRender,YRender);
             
